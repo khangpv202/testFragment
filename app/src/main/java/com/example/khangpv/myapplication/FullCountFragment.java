@@ -1,0 +1,56 @@
+package com.example.khangpv.myapplication;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+
+/**
+ * A placeholder fragment containing a simple view.
+ */
+public class FullCountFragment extends Fragment
+{
+    private static final String Tag = "khang_Full: ";
+
+    public FullCountFragment()
+    {
+        Log.d(Tag,"new Fragment");
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState)
+    {
+        View inflate = inflater.inflate(R.layout.full_count, container, false);
+        Button button = (Button) inflate.findViewById(R.id.btJump);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(getActivity(), Main2Activity.class);
+                startActivity(intent);
+
+            }
+        });
+        return inflate;
+    }
+
+    @Override
+    public void onDestroyView()
+    {
+        Log.d(Tag + this, " onDestroyView");
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        Log.d(Tag + this.toString(), " onDestroy");
+        super.onDestroy();
+    }
+}
