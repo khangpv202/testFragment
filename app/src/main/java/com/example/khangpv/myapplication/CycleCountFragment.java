@@ -1,5 +1,6 @@
 package com.example.khangpv.myapplication;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -16,7 +17,8 @@ public class CycleCountFragment extends Fragment
 
     public CycleCountFragment()
     {
-        Log.d(Tag,"new Fragment");
+        Log.d(Tag,"new CycleCountFragment");
+        this.setRetainInstance(true);
     }
 
     @Override
@@ -38,5 +40,12 @@ public class CycleCountFragment extends Fragment
     {
         super.onDestroy();
         Log.d(Tag + this.toString(), " onDestroy");
+    }
+
+    @Override
+    public void onAttach(Context context)
+    {
+        super.onAttach(context);
+        Log.d(Tag + this.toString(), " onAttach");
     }
 }

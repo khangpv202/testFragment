@@ -1,14 +1,16 @@
 package com.example.khangpv.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends FragmentActivity
 {
-
+    private static final String Tag = "MainActivity: ";
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        Log.d(Tag + this.toString(), " onCreate------------------------------------");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (getSupportFragmentManager().findFragmentByTag(MainFragment.class.getSimpleName()) == null)

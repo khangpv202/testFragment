@@ -1,5 +1,6 @@
 package com.example.khangpv.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,7 +19,7 @@ public class FullCountFragment extends Fragment
 
     public FullCountFragment()
     {
-        Log.d(Tag,"new Fragment");
+        Log.d(Tag, "new FullCountFragment");
     }
 
     @Override
@@ -52,5 +53,12 @@ public class FullCountFragment extends Fragment
     {
         Log.d(Tag + this.toString(), " onDestroy");
         super.onDestroy();
+    }
+
+    @Override
+    public void onAttach(Context context)
+    {
+        super.onAttach(context);
+        Log.d(Tag + this.toString(), " onAttach");
     }
 }

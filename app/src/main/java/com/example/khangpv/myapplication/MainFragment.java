@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 /**
@@ -22,6 +21,7 @@ public class MainFragment extends Fragment
 
     public MainFragment()
     {
+        Log.d(Tag, "new MainFragment");
     }
 
     @Override
@@ -31,8 +31,10 @@ public class MainFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.radioGroup);
 
-        FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-        if (getChildFragmentManager().findFragmentByTag(CycleCountFragment.class.getSimpleName()) == null)
+//        FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        Log.d(Tag + this.toString(), " onCreateView");
+        if (getFragmentManager().findFragmentByTag(CycleCountFragment.class.getSimpleName()) == null)
         {
             cycleCountFragment = new CycleCountFragment();
             fullCountFragment = new FullCountFragment();
@@ -42,8 +44,8 @@ public class MainFragment extends Fragment
         }
         else
         {
-            cycleCountFragment = (CycleCountFragment) getChildFragmentManager().findFragmentByTag(CycleCountFragment.class.getSimpleName());
-            fullCountFragment = (FullCountFragment) getChildFragmentManager().findFragmentByTag(FullCountFragment.class.getSimpleName());
+            cycleCountFragment = (CycleCountFragment) getFragmentManager().findFragmentByTag(CycleCountFragment.class.getSimpleName());
+            fullCountFragment = (FullCountFragment) getFragmentManager().findFragmentByTag(FullCountFragment.class.getSimpleName());
         }
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
@@ -52,7 +54,6 @@ public class MainFragment extends Fragment
             public void onCheckedChanged(RadioGroup group, int checkedId)
             {
                 FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-                Log.d(Tag + fullCountFragment + " " + cycleCountFragment, "nu");
                 if (checkedId == R.id.cycleCount)
                 {
                     fragmentTransaction.hide(fullCountFragment);
