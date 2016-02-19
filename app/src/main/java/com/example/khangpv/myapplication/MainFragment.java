@@ -29,7 +29,7 @@ public class MainFragment extends Fragment
                              Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.radioGroup);
+//        RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.radioGroup);
 
 //        FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
@@ -38,9 +38,9 @@ public class MainFragment extends Fragment
         {
             cycleCountFragment = new CycleCountFragment();
             fullCountFragment = new FullCountFragment();
-            fragmentTransaction.add(R.id.fragmentContent, cycleCountFragment, CycleCountFragment.class.getSimpleName())
-                    .add(R.id.fragmentContent, fullCountFragment, FullCountFragment.class.getSimpleName())
-                    .hide(fullCountFragment).commit();
+            fragmentTransaction.add(R.id.fragmentContent1, cycleCountFragment, CycleCountFragment.class.getSimpleName());
+            fragmentTransaction.add(R.id.fragmentContent2, fullCountFragment, FullCountFragment.class.getSimpleName())
+                    .commit();
         }
         else
         {
@@ -48,25 +48,25 @@ public class MainFragment extends Fragment
             fullCountFragment = (FullCountFragment) getFragmentManager().findFragmentByTag(FullCountFragment.class.getSimpleName());
         }
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId)
-            {
-                FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-                if (checkedId == R.id.cycleCount)
-                {
-                    fragmentTransaction.hide(fullCountFragment);
-                    fragmentTransaction.show(cycleCountFragment);
-                }
-                else
-                {
-                    fragmentTransaction.hide(cycleCountFragment);
-                    fragmentTransaction.show(fullCountFragment);
-                }
-                fragmentTransaction.commit();
-            }
-        });
+//        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+//        {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId)
+//            {
+//                FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+//                if (checkedId == R.id.cycleCount)
+//                {
+//                    fragmentTransaction.hide(fullCountFragment);
+//                    fragmentTransaction.show(cycleCountFragment);
+//                }
+//                else
+//                {
+//                    fragmentTransaction.hide(cycleCountFragment);
+//                    fragmentTransaction.show(fullCountFragment);
+//                }
+//                fragmentTransaction.commit();
+//            }
+//        });
         return view;
     }
 
